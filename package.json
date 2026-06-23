@@ -1,0 +1,15 @@
+{
+  "name": "gg-calendar",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Declarative Google Calendar sync tool",
+  "main": "sync.js",
+  "scripts": {
+    "auth": "node auth.js",
+    "sync": "node sync.js",
+    "dry-run": "node sync.js --dry-run"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}

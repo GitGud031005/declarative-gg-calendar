@@ -1,0 +1,17 @@
+[
+  {
+    "id": "morning-exercise",
+    "summary": "Morning Exercise",
+    "description": "Start the day with a healthy workout.",
+    "start": "2026-06-24T07:00:00+07:00",
+    "end": "2026-06-24T08:00:00+07:00",
+    "location": "Local Gym / Park"
+  },
+  {
+    "id": "work-focus-block",
+    "summary": "Deep Work Focus Block",
+    "description": "Uninterrupted development and planning time.",
+    "start": "2026-06-24T09:00:00+07:00",
+    "end": "2026-06-24T12:00:00+07:00"
+  }
+]
