@@ -75,7 +75,8 @@ function getReminders(event) {
   return {
     useDefault: false,
     overrides: [
-      { method: 'popup', minutes: 10 }
+      { method: 'popup', minutes: 10 },
+      { method: 'email', minutes: 10 }
     ]
   };
 }
