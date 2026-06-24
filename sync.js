@@ -14,11 +14,14 @@ function getGCalEventId(localId) {
 }
 
 // Format local start/end values into date or dateTime objects for GCal API
-function formatDateTime(val) {
+function formatDateTime(val, timeZone) {
   if (/^\d{4}-\d{2}-\d{2}$/.test(val)) {
     return { date: val };
   }
-  return { dateTime: val };
+  return { 
+    dateTime: val,
+    timeZone: timeZone
+  };
 }
 
 // Compare a local time string with a Google Calendar start/end time object
@@ -41,13 +44,36 @@ function datesAreEqual(localTime, remoteTimeObj) {
   }
 }
 
+function getRecurrenceArray(recurrence) {
+  if (!recurrence) return undefined;
+  if (Array.isArray(recurrence)) return recurrence;
+  if (typeof recurrence === 'string') return [recurrence];
+  return undefined;
+}
+
+function arraysAreEqual(arr1, arr2) {
+  const a = arr1 || [];
+  const b = arr2 || [];
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
 // Determine if a local event has differences compared to its remote counterpart
 function needsUpdate(local, remote) {
   if (local.summary !== (remote.summary || '')) return true;
   if ((local.description || '') !== (remote.description || '')) return true;
   if ((local.location || '') !== (remote.location || '')) return true;
+  if ((local.colorId || '') !== (remote.colorId || '')) return true;
   if (!datesAreEqual(local.start, remote.start)) return true;
   if (!datesAreEqual(local.end, remote.end)) return true;
+  
+  const localRec = getRecurrenceArray(local.recurrence);
+  const remoteRec = remote.recurrence;
+  if (!arraysAreEqual(localRec, remoteRec)) return true;
+  
   return false;
 }
 
@@ -139,6 +165,18 @@ async function main() {
     console.log(`Using configured calendar ID: ${calendarId}`);
   }
 
+  // Retrieve calendar time zone
+  let timeZone = 'Asia/Ho_Chi_Minh';
+  if (calendarId !== 'dry-run-temp-id') {
+    try {
+      const calInfo = await calendar.calendars.get({ calendarId });
+      timeZone = calInfo.data.timeZone || 'Asia/Ho_Chi_Minh';
+      console.log(`Using calendar time zone: ${timeZone}`);
+    } catch (err) {
+      console.warn(`Warning: Could not fetch calendar time zone. Defaulting to ${timeZone}.`, err.message);
+    }
+  }
+
   // 4. Fetch existing sync-managed events
   let remoteEvents = [];
   if (calendarId !== 'dry-run-temp-id') {
@@ -147,8 +185,8 @@ async function main() {
       const res = await calendar.events.list({
         calendarId,
         privateExtendedProperty: 'syncSource=gg-calendar-cli',
-        showDeleted: false,
-        singleEvents: true,
+        showDeleted: true,
+        singleEvents: false,
         maxResults: 250
       });
       remoteEvents = res.data.items || [];
@@ -172,8 +210,12 @@ async function main() {
     const gcalId = getGCalEventId(localEvent.id);
     const remoteEvent = remoteEventsMap.get(gcalId);
 
-    if (!remoteEvent) {
-      toInsert.push(localEvent);
+    if (!remoteEvent || remoteEvent.status === 'cancelled') {
+      if (!remoteEvent) {
+        toInsert.push(localEvent);
+      } else {
+        toUpdate.push({ local: localEvent, remote: remoteEvent });
+      }
     } else {
       if (needsUpdate(localEvent, remoteEvent)) {
         toUpdate.push({ local: localEvent, remote: remoteEvent });
@@ -182,7 +224,7 @@ async function main() {
   }
 
   for (const remoteEvent of remoteEvents) {
-    if (!localEventsMap.has(remoteEvent.id)) {
+    if (remoteEvent.status !== 'cancelled' && !localEventsMap.has(remoteEvent.id)) {
       toDelete.push(remoteEvent);
     }
   }
@@ -207,8 +249,10 @@ async function main() {
             summary: event.summary,
             description: event.description,
             location: event.location,
-            start: formatDateTime(event.start),
-            end: formatDateTime(event.end),
+            colorId: event.colorId,
+            start: formatDateTime(event.start, timeZone),
+            end: formatDateTime(event.end, timeZone),
+            recurrence: getRecurrenceArray(event.recurrence),
             extendedProperties: {
               private: {
                 syncSource: 'gg-calendar-cli',
@@ -236,8 +280,11 @@ async function main() {
             summary: local.summary,
             description: local.description,
             location: local.location,
-            start: formatDateTime(local.start),
-            end: formatDateTime(local.end),
+            colorId: local.colorId,
+            start: formatDateTime(local.start, timeZone),
+            end: formatDateTime(local.end, timeZone),
+            recurrence: getRecurrenceArray(local.recurrence),
+            status: 'confirmed',
             extendedProperties: {
               private: {
                 syncSource: 'gg-calendar-cli',

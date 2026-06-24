@@ -1,17 +1,34 @@
 [
   {
     "id": "morning-exercise",
-    "summary": "Morning Exercise",
+    "summary": "🏃 Morning Exercise",
     "description": "Start the day with a healthy workout.",
     "start": "2026-06-24T07:00:00+07:00",
     "end": "2026-06-24T08:00:00+07:00",
-    "location": "Local Gym / Park"
+    "colorId": "3",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
   },
   {
     "id": "work-focus-block",
-    "summary": "Deep Work Focus Block",
+    "summary": "💻 Deep Work Focus Block",
     "description": "Uninterrupted development and planning time.",
     "start": "2026-06-24T09:00:00+07:00",
-    "end": "2026-06-24T12:00:00+07:00"
+    "end": "2026-06-24T12:00:00+07:00",
+    "colorId": "2",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "ho-chi-minh-thought",
+    "summary": "📚 Tư tưởng Hồ Chí Minh",
+    "start": "2026-06-24T12:00:00+07:00",
+    "end": "2026-06-24T13:50:00+07:00",
+    "colorId": "3",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
   }
 ]
