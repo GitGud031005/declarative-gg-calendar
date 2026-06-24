@@ -61,6 +61,44 @@ function arraysAreEqual(arr1, arr2) {
   return true;
 }
 
+function getReminders(event) {
+  if (event.reminders) {
+    return event.reminders;
+  }
+  const isWakeup = event.id.toLowerCase().includes('wakeup') || event.summary.toLowerCase().includes('wakeup');
+  if (isWakeup) {
+    return {
+      useDefault: false,
+      overrides: []
+    };
+  }
+  return {
+    useDefault: false,
+    overrides: [
+      { method: 'popup', minutes: 10 }
+    ]
+  };
+}
+
+function remindersAreEqual(localReminders, remoteReminders) {
+  const localUseDefault = localReminders.useDefault ?? false;
+  const remoteUseDefault = remoteReminders.useDefault ?? false;
+  if (localUseDefault !== remoteUseDefault) return false;
+
+  const localOverrides = localReminders.overrides || [];
+  const remoteOverrides = remoteReminders.overrides || [];
+
+  if (localOverrides.length !== remoteOverrides.length) return false;
+
+  for (let i = 0; i < localOverrides.length; i++) {
+    const lo = localOverrides[i];
+    const ro = remoteOverrides[i];
+    if (lo.method !== ro.method || lo.minutes !== ro.minutes) return false;
+  }
+
+  return true;
+}
+
 // Determine if a local event has differences compared to its remote counterpart
 function needsUpdate(local, remote) {
   if (local.summary !== (remote.summary || '')) return true;
@@ -73,6 +111,10 @@ function needsUpdate(local, remote) {
   const localRec = getRecurrenceArray(local.recurrence);
   const remoteRec = remote.recurrence;
   if (!arraysAreEqual(localRec, remoteRec)) return true;
+
+  const localRem = getReminders(local);
+  const remoteRem = remote.reminders || { useDefault: true };
+  if (!remindersAreEqual(localRem, remoteRem)) return true;
   
   return false;
 }
@@ -253,6 +295,7 @@ async function main() {
             start: formatDateTime(event.start, timeZone),
             end: formatDateTime(event.end, timeZone),
             recurrence: getRecurrenceArray(event.recurrence),
+            reminders: getReminders(event),
             extendedProperties: {
               private: {
                 syncSource: 'gg-calendar-cli',
@@ -284,6 +327,7 @@ async function main() {
             start: formatDateTime(local.start, timeZone),
             end: formatDateTime(local.end, timeZone),
             recurrence: getRecurrenceArray(local.recurrence),
+            reminders: getReminders(local),
             status: 'confirmed',
             extendedProperties: {
               private: {
