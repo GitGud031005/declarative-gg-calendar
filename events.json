@@ -1,32 +1,396 @@
 [
   {
-    "id": "morning-exercise",
-    "summary": "🏃 Morning Exercise",
-    "description": "Start the day with a healthy workout.",
-    "start": "2026-06-24T07:00:00+07:00",
-    "end": "2026-06-24T08:00:00+07:00",
-    "colorId": "3",
+    "id": "weekday-wakeup",
+    "summary": "🌅 Wakeup & Natural Light",
+    "description": "Wakeup, restroom, hydration and natural light.",
+    "start": "2026-06-22T07:30:00+07:00",
+    "end": "2026-06-22T07:45:00+07:00",
+    "colorId": "2",
     "recurrence": [
-      "RRULE:FREQ=WEEKLY"
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
     ]
   },
   {
-    "id": "work-focus-block",
-    "summary": "💻 Deep Work Focus Block",
-    "description": "Uninterrupted development and planning time.",
-    "start": "2026-06-24T09:00:00+07:00",
-    "end": "2026-06-24T12:00:00+07:00",
+    "id": "weekday-exercises",
+    "summary": "🏋️ Exercises (Push/Sit/Squat)",
+    "description": "Exercises - 20 pushup, 20 situp, 20 squat.",
+    "start": "2026-06-22T07:45:00+07:00",
+    "end": "2026-06-22T08:00:00+07:00",
+    "colorId": "1",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "weekday-shower",
+    "summary": "🚿 Shower",
+    "description": "Quick morning shower.",
+    "start": "2026-06-22T08:00:00+07:00",
+    "end": "2026-06-22T08:15:00+07:00",
+    "colorId": "7",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "weekday-breakfast",
+    "summary": "🍳 Breakfast",
+    "description": "Healthy breakfast.",
+    "start": "2026-06-22T08:15:00+07:00",
+    "end": "2026-06-22T08:30:00+07:00",
+    "colorId": "5",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "weekday-freetime",
+    "summary": "☕ Free Time",
+    "description": "Morning free time.",
+    "start": "2026-06-22T08:30:00+07:00",
+    "end": "2026-06-22T09:15:00+07:00",
+    "colorId": "8",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "work-morning",
+    "summary": "💻 Work (Morning)",
+    "description": "Focus work session.",
+    "start": "2026-06-22T09:15:00+07:00",
+    "end": "2026-06-22T12:00:00+07:00",
+    "colorId": "9",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "work-lunch-break",
+    "summary": "🍱 Lunch Break",
+    "description": "Lunch and relaxation.",
+    "start": "2026-06-22T12:00:00+07:00",
+    "end": "2026-06-22T13:30:00+07:00",
+    "colorId": "5",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "work-afternoon",
+    "summary": "💻 Work (Afternoon)",
+    "description": "Afternoon work session.",
+    "start": "2026-06-22T13:30:00+07:00",
+    "end": "2026-06-22T18:30:00+07:00",
+    "colorId": "9",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+    ]
+  },
+  {
+    "id": "evening-work-coffee-mon-wed",
+    "summary": "☕ Work (Focus & Coffee)",
+    "description": "Coffee for works left.",
+    "start": "2026-06-22T18:30:00+07:00",
+    "end": "2026-06-22T22:00:00+07:00",
+    "colorId": "9",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,WE"
+    ]
+  },
+  {
+    "id": "evening-dinner-mon-wed",
+    "summary": "🍽️ Dinner",
+    "description": "Dinner time.",
+    "start": "2026-06-22T22:00:00+07:00",
+    "end": "2026-06-22T22:30:00+07:00",
+    "colorId": "4",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,WE"
+    ]
+  },
+  {
+    "id": "evening-badminton-tue-fri",
+    "summary": "🏸 Badminton with Friends",
+    "description": "Playing badminton with friends.",
+    "start": "2026-06-23T18:30:00+07:00",
+    "end": "2026-06-23T21:00:00+07:00",
+    "colorId": "10",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=TU,FR"
+    ]
+  },
+  {
+    "id": "evening-pickleball-thu",
+    "summary": "🎾 Pickleball with Colleagues",
+    "description": "Playing pickleball with colleagues.",
+    "start": "2026-06-25T18:30:00+07:00",
+    "end": "2026-06-25T21:00:00+07:00",
+    "colorId": "6",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=TH"
+    ]
+  },
+  {
+    "id": "evening-dinner-tue-thu-fri",
+    "summary": "🍽️ Dinner",
+    "description": "Dinner time.",
+    "start": "2026-06-23T21:00:00+07:00",
+    "end": "2026-06-23T21:30:00+07:00",
+    "colorId": "4",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=TU,TH,FR"
+    ]
+  },
+  {
+    "id": "evening-freetime-tue-thu-fri",
+    "summary": "☕ Free Time",
+    "description": "Post-exercise free time.",
+    "start": "2026-06-23T21:30:00+07:00",
+    "end": "2026-06-23T22:30:00+07:00",
+    "colorId": "8",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=TU,TH,FR"
+    ]
+  },
+  {
+    "id": "night-gaming",
+    "summary": "🎮 Gaming",
+    "description": "Overnight gaming session.",
+    "start": "2026-06-22T22:30:00+07:00",
+    "end": "2026-06-23T00:00:00+07:00",
+    "colorId": "3",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA,SU"
+    ]
+  },
+  {
+    "id": "sat-wakeup",
+    "summary": "🌅 Wakeup & Natural Light",
+    "description": "Wakeup, restroom, hydration and natural light.",
+    "start": "2026-06-27T08:30:00+07:00",
+    "end": "2026-06-27T08:45:00+07:00",
     "colorId": "2",
     "recurrence": [
       "RRULE:FREQ=WEEKLY"
     ]
   },
   {
-    "id": "ho-chi-minh-thought",
-    "summary": "📚 Tư tưởng Hồ Chí Minh",
-    "start": "2026-06-24T12:00:00+07:00",
-    "end": "2026-06-24T13:50:00+07:00",
-    "colorId": "3",
+    "id": "sat-exercises",
+    "summary": "🏋️ Exercises (Push/Sit/Squat)",
+    "description": "Exercises - 20 pushup, 20 situp, 20 squat.",
+    "start": "2026-06-27T08:45:00+07:00",
+    "end": "2026-06-27T09:00:00+07:00",
+    "colorId": "1",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-shower",
+    "summary": "🚿 Shower",
+    "description": "Morning shower.",
+    "start": "2026-06-27T09:00:00+07:00",
+    "end": "2026-06-27T09:15:00+07:00",
+    "colorId": "7",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-breakfast",
+    "summary": "🍳 Breakfast",
+    "description": "Breakfast time.",
+    "start": "2026-06-27T09:15:00+07:00",
+    "end": "2026-06-27T09:30:00+07:00",
+    "colorId": "5",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-freetime-morning",
+    "summary": "☕ Free Time",
+    "description": "Morning free time.",
+    "start": "2026-06-27T09:30:00+07:00",
+    "end": "2026-06-27T11:30:00+07:00",
+    "colorId": "8",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-noon-sleep",
+    "summary": "😴 Noon Sleep",
+    "description": "Noon sleep/nap.",
+    "start": "2026-06-27T11:30:00+07:00",
+    "end": "2026-06-27T12:30:00+07:00",
+    "colorId": "1",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-lunch",
+    "summary": "🍱 Lunch",
+    "description": "Lunch time.",
+    "start": "2026-06-27T12:30:00+07:00",
+    "end": "2026-06-27T13:00:00+07:00",
+    "colorId": "5",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-extra-learn",
+    "summary": "🏫 Extra Learning",
+    "description": "Extra learning at school.",
+    "start": "2026-06-27T13:00:00+07:00",
+    "end": "2026-06-27T17:00:00+07:00",
+    "colorId": "9",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-pickleball",
+    "summary": "🎾 Pickleball with Friends",
+    "description": "Playing pickleball with friends.",
+    "start": "2026-06-27T17:00:00+07:00",
+    "end": "2026-06-27T19:30:00+07:00",
+    "colorId": "6",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-go-home-shower",
+    "summary": "🏠 Go Home & Shower",
+    "description": "Go home and shower.",
+    "start": "2026-06-27T19:30:00+07:00",
+    "end": "2026-06-27T20:00:00+07:00",
+    "colorId": "7",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-dinner",
+    "summary": "🍽️ Dinner",
+    "description": "Dinner time.",
+    "start": "2026-06-27T20:00:00+07:00",
+    "end": "2026-06-27T20:30:00+07:00",
+    "colorId": "4",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sat-freetime-evening",
+    "summary": "☕ Free Time",
+    "description": "Evening free time.",
+    "start": "2026-06-27T20:30:00+07:00",
+    "end": "2026-06-27T22:30:00+07:00",
+    "colorId": "8",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-wakeup",
+    "summary": "🌅 Wakeup & Natural Light",
+    "description": "Wakeup, restroom, hydration and natural light.",
+    "start": "2026-06-28T08:30:00+07:00",
+    "end": "2026-06-28T08:45:00+07:00",
+    "colorId": "2",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-breakfast",
+    "summary": "🍳 Breakfast",
+    "description": "Breakfast time.",
+    "start": "2026-06-28T08:45:00+07:00",
+    "end": "2026-06-28T09:00:00+07:00",
+    "colorId": "5",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-badminton",
+    "summary": "🏸 Badminton with Friends",
+    "description": "Badminton session with friends.",
+    "start": "2026-06-28T09:00:00+07:00",
+    "end": "2026-06-28T13:00:00+07:00",
+    "colorId": "10",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-shower-noon-sleep",
+    "summary": "😴 Noon Sleep",
+    "description": "Shower and noon sleep/nap.",
+    "start": "2026-06-28T13:00:00+07:00",
+    "end": "2026-06-28T15:00:00+07:00",
+    "colorId": "1",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-freetime-afternoon",
+    "summary": "☕ Free Time",
+    "description": "Afternoon free time.",
+    "start": "2026-06-28T15:00:00+07:00",
+    "end": "2026-06-28T18:00:00+07:00",
+    "colorId": "8",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-dinner",
+    "summary": "🍽️ Dinner",
+    "description": "Dinner time.",
+    "start": "2026-06-28T18:00:00+07:00",
+    "end": "2026-06-28T18:30:00+07:00",
+    "colorId": "4",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-freetime-evening",
+    "summary": "☕ Free Time",
+    "description": "Evening free time.",
+    "start": "2026-06-28T18:30:00+07:00",
+    "end": "2026-06-28T20:00:00+07:00",
+    "colorId": "8",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-running",
+    "summary": "🏃 Running Session",
+    "description": "Sunday running session.",
+    "start": "2026-06-28T20:00:00+07:00",
+    "end": "2026-06-28T21:30:00+07:00",
+    "colorId": "11",
+    "recurrence": [
+      "RRULE:FREQ=WEEKLY"
+    ]
+  },
+  {
+    "id": "sun-freetime-night",
+    "summary": "☕ Free Time",
+    "description": "Night free time.",
+    "start": "2026-06-28T21:30:00+07:00",
+    "end": "2026-06-28T22:30:00+07:00",
+    "colorId": "8",
     "recurrence": [
       "RRULE:FREQ=WEEKLY"
     ]
